@@ -8,3 +8,14 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+  function doSearch(){
+ 
+    
+
+    //     fetch(baseUrl)
+    // .then (result => {
+    //     result.json()
+    //     .then()
+    // })
+    }
