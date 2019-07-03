@@ -1,21 +1,30 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+function getDetails(id){
+  detailURL = 'http://www.omdbapi.com/?apikey=f234863b&i=' + id;
+  fetch(detailURL)
+  .then(result => {
+    result.json()
+    .then(json => {
+      console.log(json);
+    });
+  });
+}
 
-  function doSearch(){
- 
-    
+function doSearch(){
+  var searchTerm = document.getElementById('searchterm').value;
+  baseUrl = 'http://www.omdbapi.com/?apikey=f234863b&s=' + searchTerm;
+  
+  fetch(baseUrl)
+  .then (result => {
+      result.json()
+      .then(json => {
+        console.log(json);
+        ulElement = document.getElementById('ulResults');
+        json.Search.forEach(element => {
+          let title = `<li>${element.Title}<button onclick="getDetails('${element.imdbID}')">Details</button></li>`;
+          ulElement.innerHTML += title;
+        });
+      });
+  });
+}
 
-    //     fetch(baseUrl)
-    // .then (result => {
-    //     result.json()
-    //     .then()
-    // })
-    }

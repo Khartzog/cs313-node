@@ -8,10 +8,16 @@
 </head>
 <body>
     <form>
-        <input type="text" id="searchterm">Search Term</input>
-        <input type="button" onclick="doSearch()">Search</input>
+        <input type="text" id="searchterm">Search Term
+        <input type="button" onclick="doSearch()" value="Search">
     </form>
+
+    <div id="divResults">
+		<h2>Results</h2>
+		<ul id="ulResults">
+		</ul>
+	</div>
 </body>
-<script src=“scripts/index.js”></script>
+<script src="./index.js"></script>
 </html>
 
